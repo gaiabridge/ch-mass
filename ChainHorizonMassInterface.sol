@@ -19,6 +19,8 @@ interface ChainHorizonMassInterface {
     function approve(address spender, uint256 amount) external returns (bool success);
     function allowance(address owner, address spender) external view returns (uint256 remaining);
 
-    function burn(uint256 toChainId, uint256 amount) external returns (uint256 burnId);
-    function mint(uint256 fromChainId, uint256 burnId, uint256 amount, bytes memory signature) external;
+    function burn(uint256 toChain, uint256 amount) external returns (uint256 burnId);
+    function burnCount(uint256 toChain) external view returns (uint256);
+    function mint(uint256 fromChain, uint256 burnId, uint256 amount, bytes memory signature) external;
+    function checkMinted(uint256 fromChain, uint256 burnId) external view returns (bool);
 }
